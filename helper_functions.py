@@ -146,3 +146,32 @@ def oom(x):
 
     # Return as AstroPy Quantity if input was one, else plain float
     return oom_numeric * x.unit if has_unit else oom_numeric
+
+
+def get_quadrant(angle_deg: float):
+    """
+    Returns the quadrant of a given angle in degrees.
+    Handles positive, negative, and angles >= 360.
+    """
+    # Normalize angle to [0, 360)
+    norm_angle = angle_deg % 360
+
+    # Handle boundary conditions (on coordinate axes)
+    if norm_angle == 0:
+        return "Positive X-axis"
+    elif norm_angle == 90:
+        return "Positive Y-axis"
+    elif norm_angle == 180:
+        return "Negative X-axis"
+    elif norm_angle == 270:
+        return "Negative Y-axis"
+
+    # Identify quadrant
+    if 0 < norm_angle < 90:
+        return 1
+    elif 90 < norm_angle < 180:
+        return 2
+    elif 180 < norm_angle < 270:
+        return 3
+    else:  # 270 < norm_angle < 360
+        return 4

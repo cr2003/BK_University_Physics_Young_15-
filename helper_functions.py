@@ -9,8 +9,10 @@ def fmt_vec(v, precision=2, type="f"):
     return f"<{v.x:.{precision}{type}}, {v.y:.{precision}{type}}, {v.z:.{precision}{type}}>"
 
 
-def math_to_bearing(theta):
-    """Converts mathematical angle (degrees) to navigation bearing (degrees)."""
+### change name: math_to_bearing ==> math_bearing, as it works in both ways
+def math_bearing(theta):
+    """Converts mathematical angle (degrees) to navigation bearing (degrees) and viceversa.
+    Also works the other way around, bearing --> math angle."""
     return (90 - theta) % 360
 
 
